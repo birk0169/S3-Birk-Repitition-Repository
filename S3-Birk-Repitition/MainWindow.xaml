@@ -1,0 +1,49 @@
+﻿<Window x:Class="S3_Birk_Repitition.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:S3_Birk_Repitition"
+        mc:Ignorable="d"
+        Title="Forlystelses Service - Fårup Sommerland" Height="400" Width="800">
+    <Grid>
+        <Label Content="Forlystelser" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="tbxSearchBar" HorizontalAlignment="Left" Height="23" Margin="22,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242"/>
+        <DataGrid x:Name="dtgRides" HorizontalAlignment="Left" Height="243" Margin="22,74,0,0" VerticalAlignment="Top" Width="300" AutoGenerateColumns="False" SelectionChanged="dtgRides_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Navn"
+                    Binding="{Binding Name}"
+                    IsReadOnly="True"
+                    />
+                <DataGridTextColumn
+                    Header="Kategori"
+                    Binding="{Binding Category}"
+                    IsReadOnly="True"
+                    />
+                <DataGridTextColumn
+                    Header="Status"
+                    Binding="{Binding Status}"
+                    IsReadOnly="True"
+                    />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Statistik" HorizontalAlignment="Left" Margin="364,28,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Navn:" HorizontalAlignment="Left" Margin="382,59,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kategori:" HorizontalAlignment="Left" Margin="382,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="Status:" HorizontalAlignment="Left" Margin="382,121,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal nedbrud:" HorizontalAlignment="Left" Margin="382,152,0,0" VerticalAlignment="Top"/>
+        <Label Content="Dage siden nedbrud:" HorizontalAlignment="Left" Margin="382,183,0,0" VerticalAlignment="Top"/>
+        <Label Content="Admistration" HorizontalAlignment="Left" Margin="364,224,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock x:Name="tbkRideName" HorizontalAlignment="Left" Margin="639,64,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbkRideCategory" HorizontalAlignment="Left" Margin="639,95,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbkRideStatus" HorizontalAlignment="Left" Margin="639,126,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbkRideBreakdowns" HorizontalAlignment="Left" Margin="639,157,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbkRideDaysSinceBreakdown" HorizontalAlignment="Left" Margin="639,188,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Button x:Name="btnAddNewRaport" Content="Opret Rapport" HorizontalAlignment="Left" Margin="364,267,0,0" VerticalAlignment="Top" Width="110" Height="39" Click="btnAddNewRaport_Click"/>
+        <Button x:Name="btnSeeRaport" Content="Se Rapporter" HorizontalAlignment="Left" Margin="479,267,0,0" VerticalAlignment="Top" Width="110" Height="39" Click="btnSeeRaport_Click"/>
+        <Button x:Name="btnAddNewRide" Content="Opret Forlystelser" HorizontalAlignment="Left" Margin="594,267,0,0" VerticalAlignment="Top" Width="110" Height="39" Click="btnAddNewRide_Click"/>
+        <Button x:Name="btnSearchButton" Content="SØG" HorizontalAlignment="Left" Margin="269,46,0,0" VerticalAlignment="Top" Width="53" Height="23" Click="btnSearchButton_Click"/>
+
+    </Grid>
+</Window>
