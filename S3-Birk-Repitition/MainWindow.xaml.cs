@@ -32,7 +32,7 @@ namespace S3_Birk_Repitition
             //Report testReport = new Report("Nebrud", DateTime.Now, "Test", testRide);
             //testRide.Reports.Add(testReport);
             //tbkRideBreakdowns.Text = testRide.Breakdowns.ToString();
-            
+            MessageBox.Show("Dette er en test");
         }
 
         //Selection change for dtgRides
