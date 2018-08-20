@@ -44,6 +44,7 @@ namespace S3_Birk_Repitition
         /// A property containing the List<Report> of the object
         /// </summary>
         internal List<Report> Reports { get => reports; set => reports = value; }
+        public int Breakdowns { get; set; }
         //public int Breakdowns { get { return GetNumberOfBreakdowns(); } }
         //public int DaysSinceLastBreakdown { get => daysSinceLastBreakdown; set => daysSinceLastBreakdown = value; }
 

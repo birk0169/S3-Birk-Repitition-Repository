@@ -44,7 +44,7 @@ namespace S3_Birk_Repitition
             //Set Ride status textblock
             tbkRideStatus.Text = (dtgRides.SelectedItem as Ride).Status;
             //Set Ride breakdowns textblock
-            //tbkRideBreakdowns.Text = (dtgRides.SelectedItem as Ride).Breakdowns.ToString();
+            tbkRideBreakdowns.Text = (dtgRides.SelectedItem as Ride).Breakdowns.ToString();
         }
 
         private void btnAddNewRide_Click(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace S3_Birk_Repitition
         {
             if (dtgRides.SelectedItem == null)
             {
-
+                MessageBox.Show("Du skal vælge en forlystelse for du kan oprette en rapport");
             }
             else
             {
@@ -73,10 +73,22 @@ namespace S3_Birk_Repitition
 
         private void btnSeeRaport_Click(object sender, RoutedEventArgs e)
         {
-            ReportsOverviewWindow openWindow = new ReportsOverviewWindow(function);
-            openWindow.Owner = this;
-            openWindow.Show();
-            this.Hide();
+            if (dtgRides.SelectedItem == null)
+            {
+                MessageBox.Show("Du skal vælge en forlystelse for du kan se dens raporter");
+            }
+            else if (!(dtgRides.SelectedItem as Ride).Reports.Any())
+            {
+                MessageBox.Show("Denne forlystelse har ingen rapporter oprettede på sig");
+            }
+            else
+            {
+                ReportsOverviewWindow openWindow = new ReportsOverviewWindow(function, dtgRides.SelectedItem as Ride);
+                openWindow.Owner = this;
+                openWindow.Show();
+                this.Hide();
+            }
+            
         }
 
         private void btnSearchButton_Click(object sender, RoutedEventArgs e)
