@@ -63,10 +63,11 @@ namespace S3_Birk_Repitition
         public List<Ride> GetRideWithReportsList()
         {
             List<Ride> list = GetRideList();
+            List<Report> reports = GetReportList();
             foreach (Ride ride in list)
             {
 
-                foreach (Report report in GetReportList())
+                foreach (Report report in reports)
                 {
                     if (report.Ride.Id == ride.Id)
                     {

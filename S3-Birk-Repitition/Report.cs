@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace S3_Birk_Repitition
 {
+    /// <summary>
+    /// Class containing report data
+    /// </summary>
     public class Report
     {
         //Fields
