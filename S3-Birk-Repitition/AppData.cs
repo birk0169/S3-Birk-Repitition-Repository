@@ -8,6 +8,9 @@ using S3_Birk_Repitition.DataSetRideServiceTableAdapters;
 
 namespace S3_Birk_Repitition
 {
+    /// <summary>
+    /// Interacts with the sql database and either gets data or adds data to it. 
+    /// </summary>
     public class AppData
     {
         DataSetRideService dataset = new DataSetRideService();
@@ -15,6 +18,10 @@ namespace S3_Birk_Repitition
 
         //GET
         //Get Ride list
+        /// <summary>
+        /// Loads the rides from the database and then coverts it into a Ride list which it returns
+        /// </summary>
+        /// <returns>List<Ride></returns>
         public List<Ride> GetRideList()
         {
             RidesDataTable rideRows = new RidesDataTable();
@@ -30,6 +37,10 @@ namespace S3_Birk_Repitition
         }
 
         //Get Report list
+        /// <summary>
+        /// Loads the reports from the database and coverts it into a Report list which it then returns
+        /// </summary>
+        /// <returns>List<Report></returns>
         public List<Report> GetReportList()
         {
             ReportsDataTable reportRows = new ReportsDataTable();
@@ -44,8 +55,35 @@ namespace S3_Birk_Repitition
             return list;
         }
 
+        //Get ride with reports
+        /// <summary>
+        /// Goes through the Report list and adds the reports to the Ride list and then returns that list
+        /// </summary>
+        /// <returns>List<Ride> with its report property filled out</returns>
+        public List<Ride> GetRideWithReportsList()
+        {
+            List<Ride> list = GetRideList();
+            foreach (Ride ride in list)
+            {
+
+                foreach (Report report in GetReportList())
+                {
+                    if (report.Ride.Id == ride.Id)
+                    {
+                        ride.AddReportToList(report);
+                    }
+                }
+            }
+            return list;
+        }
+
         //FIND
         //Find ride by id
+        /// <summary>
+        /// Goes through the ride list to find a specific ride by id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns>Ride</returns>
         private Ride FindRideById(int Id)
         {
             foreach (Ride ride in GetRideList())
@@ -60,6 +98,10 @@ namespace S3_Birk_Repitition
 
         //ADD
         //Add ride
+        /// <summary>
+        /// Adds a Ride to the Rides table in the database
+        /// </summary>
+        /// <param name="ride"></param>
         public void AddRide(Ride ride)
         {
             RidesRow row = dataset.Rides.NewRidesRow();
@@ -76,6 +118,10 @@ namespace S3_Birk_Repitition
         }
 
         //Add Report
+        /// <summary>
+        /// Adds a Report to the Reports table in the database
+        /// </summary>
+        /// <param name="report"></param>
         public void AddReport(Report report)
         {
             ReportsRow row = dataset.Reports.NewReportsRow();
@@ -106,6 +152,11 @@ namespace S3_Birk_Repitition
         }
 
         //Edit Ride status in database
+        /// <summary>
+        /// Edits the Ride status inside the database
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <param name="status"></param>
         public void EditRideStatus(Ride ride, string status)
         {
             //Get database rows
